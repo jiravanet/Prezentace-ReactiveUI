@@ -1,4 +1,6 @@
-﻿namespace MsFest.ReactiveUI.Wpf
+﻿using MsFest.ReactiveUI.Wpf.ViewModels;
+
+namespace MsFest.ReactiveUI.Wpf
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -8,6 +10,8 @@
         public MainWindow()
         {
             InitializeComponent();
+            var appBootstrap = new AppBootstrap();
+            DataContext = appBootstrap;
         }
     }
 }

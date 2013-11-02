@@ -1,12 +1,14 @@
 ﻿using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using ReactiveUI;
 
 namespace MsFest.ReactiveUI.Wpf.ViewModels
 {
-    public class PersonListViewModel : ReactiveObject
+    public class PersonListViewModel : ReactiveObject, IRoutableViewModel
     {
-        public PersonListViewModel(IPersonRepository personRepository = null)
+        public PersonListViewModel(IScreen hostScreen, IPersonRepository personRepository = null)
         {
+            HostScreen = hostScreen;
             personRepository = personRepository ?? new PersonRepository();
             Persons = new ReactiveList<PersonItemViewModel>();
             RefreshCommand = new ReactiveCommand(null);
@@ -31,5 +33,12 @@ namespace MsFest.ReactiveUI.Wpf.ViewModels
             get;
             protected set;
         }
+
+        public string UrlPathSegment
+        {
+            get { return "personlist"; }
+        }
+
+        public IScreen HostScreen { get; private set; }
     }
 }
