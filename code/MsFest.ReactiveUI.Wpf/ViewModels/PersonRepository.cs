@@ -24,7 +24,7 @@ namespace MsFest.ReactiveUI.Wpf.ViewModels
         {
             for (var i = 0; i < 10; i++)
             {
-                AddPerson(new Person()
+                AddPerson(new Person
                 {
                     Age = 18 + i,
                     FirstName = "First " + i,
@@ -49,6 +49,18 @@ namespace MsFest.ReactiveUI.Wpf.ViewModels
 
     public class Person
     {
+        public Person()
+        {
+            
+        }
+
+        public Person(string firstName, string lastName, int age)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Age = age;
+        }
+
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

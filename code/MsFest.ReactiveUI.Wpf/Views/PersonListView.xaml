@@ -11,7 +11,10 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Border Grid.Row="0">
-            <Button x:Name="refresh" Content="Refresh" />
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="refresh" Content="Refresh" />
+                <Button x:Name="add" Content="Add" Command="{Binding NewPersonCommand}" />
+            </StackPanel>
         </Border>
         <Border Grid.Row="1">
             <ListBox x:Name="persons">

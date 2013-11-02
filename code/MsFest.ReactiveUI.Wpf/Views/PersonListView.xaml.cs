@@ -25,6 +25,9 @@ namespace MsFest.ReactiveUI.Wpf.Views
                     this.BindCommand(ViewModel,
                         model => model.RefreshCommand,
                         window => window.refresh);
+                    //this.BindCommand(ViewModel,
+                    //    model => model.NewPersonCommand,
+                    //    window => window.add);
                     return Disposable.Empty;
                 });
         }

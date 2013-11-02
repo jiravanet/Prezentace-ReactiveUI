@@ -12,6 +12,7 @@ namespace MsFest.ReactiveUI.Wpf.ViewModels
             resolver.RegisterConstant(this, typeof(IScreen));
             resolver.Register(() => new LoginRouteView(), typeof(IViewFor<LoginRouteViewModel>));
             resolver.Register(() => new PersonListView(), typeof(IViewFor<PersonListViewModel>));
+            resolver.Register(() => new PersonAddView(), typeof(IViewFor<PersonAddViewModel>));
 
             Router.Navigate.Execute(new LoginRouteViewModel(this));
         }

@@ -1,5 +1,5 @@
-﻿using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
+﻿using System;
+using System.Linq;
 using ReactiveUI;
 
 namespace MsFest.ReactiveUI.Wpf.ViewModels
@@ -11,6 +11,8 @@ namespace MsFest.ReactiveUI.Wpf.ViewModels
             HostScreen = hostScreen;
             personRepository = personRepository ?? new PersonRepository();
             Persons = new ReactiveList<PersonItemViewModel>();
+            NewPersonCommand = new ReactiveCommand(null);
+            NewPersonCommand.RegisterAsyncAction(_ => { }).Subscribe(_ => HostScreen.Router.Navigate.Execute(new PersonAddViewModel(HostScreen)));
             RefreshCommand = new ReactiveCommand(null);
             RefreshCommand.RegisterAsync<object>(_ =>
             {
@@ -24,9 +26,11 @@ namespace MsFest.ReactiveUI.Wpf.ViewModels
                 }
                 return null;
             });
+
         }
 
         public ReactiveCommand RefreshCommand { get; protected set; }
+        public ReactiveCommand NewPersonCommand { get; protected set; }
 
         public ReactiveList<PersonItemViewModel> Persons
         {
