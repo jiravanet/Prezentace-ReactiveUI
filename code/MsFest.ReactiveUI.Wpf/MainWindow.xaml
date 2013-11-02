@@ -1,0 +1,13 @@
+﻿<Window x:Class="MsFest.ReactiveUI.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel>
+        <TextBlock Text="UserName:" />
+        <TextBox x:Name="userName" />
+        <TextBlock Text="Password:" />
+        <TextBox x:Name="password" />
+        <TextBox x:Name="message" />
+        <Button x:Name="login" Content="Login"/>
+    </StackPanel>
+</Window>
