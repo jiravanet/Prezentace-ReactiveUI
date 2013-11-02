@@ -1,0 +1,230 @@
+﻿<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  <!-- PAGE -->
+  <slide>
+    <hgroup>
+			<h2>Agenda</h2>
+    </hgroup>
+    <article>
+			<ul>
+				<li>ReactiveUI - představení</li>
+				<li>MVVM</li>
+				<li>INotifyPropertyChanged</li>
+				<li>ICommand</li>
+				<li>Binding v code behind</li>
+				<li>MessageBus</li>
+				<li>Routing</li>
+				<li>DEMO</li>
+			</ul>
+    </article>
+  </slide>
+
+		<!-- PAGE -->
+  <slide>
+    <hgroup>
+			<h2>Reactive UI - představení</h2>
+    </hgroup>
+    <article>
+			<ul>
+				<li>využívá Reactive extensions</li>
+				<li>MVVM Framework by Paul Betts http://reactiveui.net</li>
+			</ul>
+			<ul>
+				<li>přepracovaná verze 5.2 pro .NET 4.5 =&gt; Win8, WinRT, WP8, iOS, Android</li>
+				<li>souběžný vývoj větve verze 4 pro .NET 4.0 a tím i podpora třeba pro Silverlight</li>
+			</ul>
+			<ul>
+				<li>NuGet - Install-Package ReactiveUI</li>
+				<li>using ReactiveUI;</li>
+			</ul>
+    </article>
+  </slide>
+
+		<!-- PAGE -->
+  <slide>
+    <hgroup>
+			<h2>MVVM</h2>
+    </hgroup>
+    <article>
+			<ul>
+				<li>hojně používaný prezentační vzor zejména v MS</li>
+				<li>přebírají jej i ostatní platformy
+					<ul>
+						<li>WPF</li>
+						<li>WinForms</li>
+						<li>JavaScript</li>
+						<li>Cocoa</li>
+						<li>Android</li>
+					</ul>					
+				</li>
+			</ul>
+			<ul>
+				<li>ViewModel publikuje
+					<ul>
+						<li>Property</li>
+						<li>Command</li>
+					</ul>
+				</li>
+			</ul>
+    </article>
+  </slide>
+
+		<!-- PAGE -->
+  <slide>
+    <hgroup>
+			<h2>INotifyPropertyChanged</h2>
+    </hgroup>
+    <article>
+			<ul>
+				<li>v ReactiveUI existuje základní třída ReactiveObject</li>
+				<li>pomocné metody a třídy
+					<ul>
+						<li>RaiseAndSetIfChanged</li>
+						<li>ObservableForProperty</li>
+						<li>ObservableAsPropertyHelper</li>
+						<li>RxApp.GetFieldNameForPropertyNameFunc</li>
+					</ul>
+				</li>
+			</ul>
+    </article>
+  </slide>
+
+		<!-- PAGE -->
+  <slide>
+    <hgroup>
+			<h2>ICommand</h2>
+    </hgroup>
+    <article>
+			<ul>
+				<li>v ReactiveUI existuje třída ReactiveCommand</li>
+				<li>dokáže spouštět asynchronní operace a publikovat výsledek do MainThread vlákna</li>
+				<li>automaticky zajišťuje "disablování" prvku na UI změnou vlastnosti CanExecute</li>
+				<li>umožňuje skládání více Commandu do jednoho</li>
+			</ul>
+    </article>
+  </slide>
+		
+		<!-- PAGE -->
+  <slide>
+    <hgroup>
+			<h2>Binding v code behind</h2>
+    </hgroup>
+    <article>
+			<ul>
+				<li>nechte práci na XAMLu designérům</li>
+				<li>nejedná se o deklarativní binding jako třeba v podání Caliburn.Micro = máte vše pod kontrolou</li>
+				<li>implementace IViewFor&lt;TViewModel&gt;
+					<ul>
+						<li>Bind</li>
+						<li>OneWayBind</li>
+						<li>BindCommand</li>
+					</ul>
+				</li>
+			</ul>
+    </article>
+  </slide>
+		
+		<!-- PAGE -->
+  <slide>
+    <hgroup>
+			<h2>MessageBus</h2>
+    </hgroup>
+    <article>
+			<ul>
+				<li>slouží k decouplingu jednotlivých částí aplikace</li>
+				<li>implementuje rozhraní IMessageBus</li>
+				<li>výchozí implementace ve třídě MessageBus a instance publikovaná přes statickou vlastnost Instance</li>
+				<li>zasílání a přijímání pomocí
+					<ul>
+						<li>RegisterMessageSource - můžeme registrovat přímo Command a publikovat tak zprávy</li>
+						<li>SendMessage - odeslání zprávy a kontraktu</li>
+						<li>Listen - přihlášení k odběru událostí a rozlišení dle kontraktu</li>
+					</ul>
+				</li>
+			</ul>
+    </article>
+  </slide>
+		
+		<!-- PAGE -->
+  <slide>
+    <hgroup>
+			<h2>Routing</h2>
+    </hgroup>
+    <article>
+			<ul>
+				<li>slouží k navigaci mezi jednotlivými View uvnitř aplikace</li>
+				<li>ViewModel implementuje rozhraní IRoutableViewModel</li>
+				<li>Root window obsahuje RoutedViewHost prvek do kterého se jednotlivá View umísťují</li>
+			</ul>
+    </article>
+  </slide>
+		
+
+		<!-- PAGE -->
+  <slide>
+    <hgroup>
+		<h2>ReactiveUI</h2>
+    </hgroup>
+    <article>
+		<p class="demo">DEMO</p>
+    </article>
+  </slide>
+
+		<!-- PAGE -->
+  <slide class="segue dark nobackground">
+    <hgroup class="auto-fadein">
+      <h2>Otázky ??? a Odpovědi</h2>
+    </hgroup>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+  
+
+  <slide class="segue dark nobackground">
+    <hgroup class="auto-fadein">
+      <h2>Děkuji za pozornost</h2>
+    </hgroup>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+</body>
+</html>
