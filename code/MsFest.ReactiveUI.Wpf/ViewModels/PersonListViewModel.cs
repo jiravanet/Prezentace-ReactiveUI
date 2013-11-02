@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Reactive;
+using System.Reactive.Linq;
+using System.Windows.Documents;
 using ReactiveUI;
 
 namespace MsFest.ReactiveUI.Wpf.ViewModels
@@ -14,7 +18,9 @@ namespace MsFest.ReactiveUI.Wpf.ViewModels
             NewPersonCommand = new ReactiveCommand(null);
             NewPersonCommand.RegisterAsyncAction(_ => { }).Subscribe(_ => HostScreen.Router.Navigate.Execute(new PersonAddViewModel(HostScreen)));
             RefreshCommand = new ReactiveCommand(null);
-            RefreshCommand.RegisterAsync<object>(_ =>
+            var refresh = RefreshCommand.RegisterAsync<List<Person>>(_ => Observable.Start(() => personRepository.RetrievePersonsAsync().
+                                                                                                                  Result));
+            refresh.Subscribe(list =>
             {
                 using (Persons.SuppressChangeNotifications())
                 {
@@ -24,9 +30,13 @@ namespace MsFest.ReactiveUI.Wpf.ViewModels
                                                                              d.LastName,
                                                                              d.Age)));
                 }
-                return null;
             });
-
+            MessageBus.Current.Listen<Person>().
+                       Subscribe(p =>
+                       {
+                           personRepository.AddPerson(p);
+                           RefreshCommand.Execute(null);
+                       });
         }
 
         public ReactiveCommand RefreshCommand { get; protected set; }
