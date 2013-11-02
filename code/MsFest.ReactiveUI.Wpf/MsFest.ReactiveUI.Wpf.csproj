@@ -79,6 +79,12 @@
     </ApplicationDefinition>
     <Compile Include="ViewModels\Authentication.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\PersonItemViewModel.cs" />
+    <Compile Include="ViewModels\PersonListViewModel.cs" />
+    <Compile Include="ViewModels\PersonRepository.cs" />
+    <Compile Include="Views\PersonListView.xaml.cs">
+      <DependentUpon>PersonListView.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -91,6 +97,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\PersonListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
