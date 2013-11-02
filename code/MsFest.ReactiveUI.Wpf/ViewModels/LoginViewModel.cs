@@ -7,9 +7,9 @@ namespace MsFest.ReactiveUI.Wpf.ViewModels
 {
     public class LoginViewModel : ReactiveObject
     {
-        public LoginViewModel()
+        public LoginViewModel(IAuthentication authentication = null)
         {
-            var authentication = new Authentication();
+            authentication = authentication ?? new Authentication();
             var canLogin = this.WhenAny(x => x.LoginName,
                 x => x.Password,
                 (l, p) => !String.IsNullOrWhiteSpace(l.Value) && !String.IsNullOrWhiteSpace(p.Value));

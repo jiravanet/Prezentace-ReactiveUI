@@ -15,7 +15,7 @@ namespace MsFest.ReactiveUI.Wpf.ViewModels
         {
             return username == "jarda" && password == "heslo"
                        ? AuthenticationResult.Authenticated
-                       : AuthenticationResult.Nonauthenticated;
+                       : AuthenticationResult.Failed;
         }
 
         public Task<AuthenticationResult> AuthenticateAsync(string username, string password)
@@ -34,6 +34,6 @@ namespace MsFest.ReactiveUI.Wpf.ViewModels
     public enum AuthenticationResult
     {
         Authenticated,
-        Nonauthenticated
+        Failed
     }
 }
