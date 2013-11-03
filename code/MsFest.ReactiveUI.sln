@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MsFest.ReactiveUI.Wpf", "Ms
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MsFest.ReactiveUI.Tests", "MsFest.ReactiveUI.Tests\MsFest.ReactiveUI.Tests.csproj", "{FAD3A7F6-4857-4DD8-8E2A-4A3FABE24F56}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MsFest.ReactiveUI.WinForm", "MsFest.ReactiveUI.WinForm\MsFest.ReactiveUI.WinForm.csproj", "{9967471F-8E15-49B1-B81F-791FE793F745}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FAD3A7F6-4857-4DD8-8E2A-4A3FABE24F56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAD3A7F6-4857-4DD8-8E2A-4A3FABE24F56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAD3A7F6-4857-4DD8-8E2A-4A3FABE24F56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9967471F-8E15-49B1-B81F-791FE793F745}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9967471F-8E15-49B1-B81F-791FE793F745}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9967471F-8E15-49B1-B81F-791FE793F745}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9967471F-8E15-49B1-B81F-791FE793F745}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

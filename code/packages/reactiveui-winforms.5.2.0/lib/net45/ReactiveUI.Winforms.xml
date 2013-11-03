@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ReactiveUI.Winforms</name>
+    </assembly>
+    <members>
+        <member name="T:ReactiveUI.ComponentModelTypeConverter">
+            <summary>
+            This binding type converter uses the built-in WPF component model 
+            conversions to get a whole bunch of conversions for free. Unfortunately,
+            these are pretty gutted on some other platforms like Silverlight.
+            </summary>
+        </member>
+        <member name="T:ReactiveUI.Winforms.PlatformUnitTestDetector">
+            <summary>
+            Because RxUI.dll is in a PLib, it doesn't have the SuperPowers it needs
+            to be able to really detect whether it's in a unit test runner. This class
+            is much better at it.
+            </summary>
+        </member>
+        <member name="M:ReactiveUI.Winforms.ReactiveBindingList`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            ReactiveBindingList constructor
+            </summary>
+            <param name="items"></param>
+        </member>
+        <member name="M:ReactiveUI.Winforms.ReactiveBindingList`1.transformAndRaise(System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
+            <summary>
+            Transforms NotifyCollectionChangedEventArgs into 1 or more ListChangedEventsArgs
+            and raises them if there are any attached handlers
+            </summary>
+            <param name="ea"></param>
+        </member>
+        <member name="T:ReactiveUI.Winforms.CreatesWinformsCommandBinding">
+            <summary>
+            This binder is the default binder for connecting to arbitrary events
+            </summary>
+        </member>
+        <member name="T:ReactiveUI.Winforms.Registrations">
+            <summary>
+            Ignore me. This class is a secret handshake between RxUI and RxUI.Xaml
+            in order to register certain classes on startup that would be difficult
+            to register otherwise.
+            </summary>
+        </member>
+    </members>
+</doc>
